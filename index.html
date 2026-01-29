@@ -1,0 +1,1263 @@
+cat > /mnt/user-data/outputs/acido_citrico_mejorado.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Ácido Cítrico - Trabajo Académico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Paleta sobria profesional: Verdes, crema, grises */
+            --verde-oscuro: #2d5016;
+            --verde-medio: #4a7c2c;
+            --verde-claro: #6b9b47;
+            --verde-suave: #a8c090;
+            --crema: #f5f3e8;
+            --crema-claro: #fdfcf7;
+            --gris-oscuro: #3a3a3a;
+            --gris-medio: #6a6a6a;
+            --gris-claro: #b5b5b5;
+            --blanco: #ffffff;
+            --accent-limon: #d4e157;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--crema-claro);
+            color: var(--gris-oscuro);
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondo sutil de limones - Muy baja opacidad */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.03;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="30" fill="%23d4e157"/></svg>');
+            background-size: 200px 200px;
+            background-position: 0 0, 100px 100px;
+        }
+
+        /* Decoración sutil de limones en esquinas */
+        body::after {
+            content: '🍋';
+            position: fixed;
+            font-size: 120px;
+            opacity: 0.04;
+            z-index: -1;
+            top: 10%;
+            right: 5%;
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .lemon-decoration {
+            position: fixed;
+            font-size: 80px;
+            opacity: 0.04;
+            z-index: -1;
+            pointer-events: none;
+            animation: float 25s ease-in-out infinite;
+        }
+
+        .lemon-decoration:nth-child(1) { bottom: 15%; left: 3%; animation-delay: -5s; }
+        .lemon-decoration:nth-child(2) { top: 50%; right: 8%; font-size: 100px; animation-delay: -15s; }
+        .lemon-decoration:nth-child(3) { bottom: 30%; right: 25%; font-size: 70px; animation-delay: -20s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Header profesional */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
+            color: var(--crema-claro);
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+        }
+
+        .header-title {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.3px;
+        }
+
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        /* Navegación sobria */
+        nav {
+            background: linear-gradient(135deg, var(--verde-medio) 0%, var(--verde-claro) 100%);
+            padding: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            color: var(--crema-claro);
+            text-decoration: none;
+            padding: 0.9rem 1.6rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        nav a:hover,
+        nav a.active {
+            border-bottom-color: var(--accent-limon);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Main content */
+        main {
+            margin-top: 160px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Secciones elegantes */
+        section {
+            background: var(--blanco);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            border-left: 4px solid var(--verde-medio);
+            position: relative;
+        }
+
+        section::before {
+            content: '🍋';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+            opacity: 0.05;
+        }
+
+        h2 {
+            font-family: 'Lora', serif;
+            color: var(--verde-oscuro);
+            font-size: 1.9rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--verde-suave);
+            padding-bottom: 0.8rem;
+        }
+
+        h3 {
+            font-family: 'Lora', serif;
+            color: var(--verde-medio);
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: var(--verde-claro);
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.8rem 0;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            color: var(--gris-oscuro);
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+            color: var(--gris-oscuro);
+        }
+
+        strong {
+            color: var(--verde-oscuro);
+            font-weight: 600;
+        }
+
+        em {
+            color: var(--gris-medio);
+        }
+
+        /* Tablas profesionales */
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--blanco);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--verde-medio), var(--verde-claro));
+            color: var(--crema-claro);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        td {
+            padding: 0.9rem;
+            border-bottom: 1px solid var(--crema);
+            color: var(--gris-oscuro);
+        }
+
+        tr:hover {
+            background: var(--crema);
+        }
+
+        /* Cajas informativas */
+        .info-box {
+            background: linear-gradient(135deg, #f8f9f0 0%, #f0f4e8 100%);
+            border-left: 4px solid var(--verde-claro);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fffef5 0%, #fefce8 100%);
+            border: 2px solid var(--accent-limon);
+            padding: 1.8rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+        }
+
+        /* Acordeón de procesos */
+        .process-item {
+            margin-bottom: 1rem;
+            border: 1px solid var(--crema);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .process-header {
+            background: linear-gradient(135deg, var(--verde-suave), #c5d9b5);
+            padding: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--verde-oscuro);
+        }
+
+        .process-header:hover {
+            background: linear-gradient(135deg, var(--verde-claro), var(--verde-suave));
+            color: var(--blanco);
+        }
+
+        .process-header.active {
+            background: var(--verde-medio);
+            color: var(--crema-claro);
+        }
+
+        .process-header::after {
+            content: '▼';
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .process-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        .process-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: var(--blanco);
+        }
+
+        .process-content.active {
+            max-height: 5000px;
+            padding: 1.5rem;
+        }
+
+        /* SISTEMA INTERACTIVO DE ESQUEMAS - NÚCLEO DE LA MEJORA */
+        .interactive-diagram-container {
+            position: relative;
+            margin: 2rem 0;
+            background: var(--crema);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .interactive-diagram-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            cursor: help;
+        }
+
+        /* Hotspots clickeables sobre las imágenes */
+        .diagram-hotspot {
+            position: absolute;
+            background: rgba(106, 155, 71, 0.25);
+            border: 2px solid var(--verde-medio);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(106, 155, 71, 0.7);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(106, 155, 71, 0);
+            }
+        }
+
+        .diagram-hotspot:hover {
+            background: rgba(106, 155, 71, 0.5);
+            border-color: var(--verde-oscuro);
+            transform: scale(1.15);
+            animation: none;
+        }
+
+        /* Panel modal de información */
+        .info-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .info-modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .info-modal-content {
+            background: var(--blanco);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            position: relative;
+            animation: slideUp 0.3s ease;
+            border-top: 4px solid var(--verde-medio);
+        }
+
+        @keyframes slideUp {
+            from { 
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .info-modal-content h3 {
+            color: var(--verde-oscuro);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--verde-suave);
+            padding-bottom: 0.5rem;
+        }
+
+        .info-modal-content p {
+            color: var(--gris-oscuro);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .info-modal-content ul,
+        .info-modal-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-modal-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--verde-medio);
+            color: var(--crema-claro);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: var(--verde-oscuro);
+            transform: rotate(90deg);
+        }
+
+        /* Indicador de interactividad */
+        .diagram-hint {
+            text-align: center;
+            color: var(--verde-medio);
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
+            font-style: italic;
+        }
+
+        .diagram-hint::before {
+            content: '💡 ';
+        }
+
+        /* Footer profesional */
+        footer {
+            background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--gris-oscuro) 100%);
+            color: var(--crema);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-authors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .author {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-limon);
+        }
+
+        .author strong {
+            display: block;
+            color: var(--crema-claro);
+            margin-bottom: 0.5rem;
+        }
+
+        .author span {
+            font-size: 0.85rem;
+            color: var(--gris-claro);
+        }
+
+        /* Bibliografía */
+        .bibliography .reference {
+            padding-left: 2rem;
+            text-indent: -2rem;
+            margin-bottom: 1rem;
+            color: var(--gris-oscuro);
+        }
+
+        /* Botón scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--verde-medio);
+            color: var(--crema-claro);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--verde-oscuro);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                padding: 2rem 1rem;
+                margin-top: 200px;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 0.8rem 1rem;
+            }
+
+            .info-modal-content {
+                margin: 1rem;
+                padding: 1.5rem;
+                max-width: 90%;
+            }
+
+            .diagram-hotspot {
+                border-width: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Limones decorativos adicionales -->
+    <div class="lemon-decoration">🍋</div>
+    <div class="lemon-decoration">🍋</div>
+    <div class="lemon-decoration">🍋</div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1 class="header-title">El Ácido Cítrico</h1>
+            <p class="header-subtitle">Compuesto Orgánico de Relevancia Industrial y Bioquímica</p>
+        </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <ul>
+            <li><a href="#introduccion">Introducción</a></li>
+            <li><a href="#estructura">Estructura Química</a></li>
+            <li><a href="#propiedades">Propiedades</a></li>
+            <li><a href="#procesos">Procesos de Obtención</a></li>
+            <li><a href="#aplicaciones">Aplicaciones</a></li>
+            <li><a href="#impacto">Impacto</a></li>
+            <li><a href="#conclusion">Conclusión</a></li>
+            <li><a href="#bibliografia">Bibliografía</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Introducción -->
+        <section id="introduccion">
+            <h2>Introducción</h2>
+            
+            <p>El ácido cítrico (2-hidroxi-1,2,3-propanotricarboxílico, C₆H₈O₇) constituye un compuesto orgánico tricarboxílico de fundamental importancia tanto en procesos metabólicos naturales como en aplicaciones industriales a nivel global. Su presencia ubicua en frutas cítricas, especialmente en limones (Citrus limon) y limas (Citrus aurantifolia), ha determinado su nomenclatura común, aunque su relevancia trasciende ampliamente el ámbito botánico para posicionarse como un intermediario metabólico crítico en el ciclo de Krebs, proceso bioquímico central en la respiración celular aeróbica de organismos eucariotas.</p>
+            
+            <p>Desde perspectivas industriales y económicas, el ácido cítrico representa uno de los ácidos orgánicos de mayor producción y comercialización mundial, con volúmenes de fabricación superiores a 2.5 millones de toneladas métricas anuales. Esta magnitud productiva responde a su versatilidad funcional en sectores tan diversos como la industria alimentaria, farmacéutica, cosmética, química y de limpieza, donde desempeña roles específicos como acidulante, antioxidante, agente quelante, regulador de pH, preservante y potenciador de sabor.</p>
+            
+            <div class="highlight-box">
+                <p><strong>Relevancia Académica y Profesional:</strong> El estudio sistemático del ácido cítrico resulta fundamental para profesionales de ingeniería química, ciencias de alimentos, biotecnología y química industrial, dado que su producción, caracterización y aplicación integran conocimientos de química orgánica, bioquímica, termodinámica, operaciones unitarias y control de procesos. La comprensión profunda de este compuesto proporciona bases conceptuales sólidas aplicables al análisis y optimización de procesos productivos en múltiples sectores industriales.</p>
+            </div>
+            
+            <p>Este documento académico presenta un análisis técnico-científico integral del ácido cítrico, abordando su estructura molecular, propiedades fisicoquímicas, métodos de obtención industrial, aplicaciones sectoriales y aspectos de seguridad y regulación, con el objetivo de proporcionar una base de conocimiento rigurosa y actualizada sobre este compuesto de relevancia multidisciplinaria.</p>
+        </section>
+
+        <!-- Estructura Química -->
+        <section id="estructura">
+            <h2>Estructura Química y Nomenclatura</h2>
+            
+            <h3>Identificación Sistemática</h3>
+            
+            <div class="info-box">
+                <p><strong>Nombre IUPAC:</strong> Ácido 2-hidroxipropano-1,2,3-tricarboxílico</p>
+                <p><strong>Nombre común:</strong> Ácido cítrico</p>
+                <p><strong>Fórmula molecular:</strong> C₆H₈O₇</p>
+                <p><strong>Peso molecular:</strong> 192.124 g/mol</p>
+                <p><strong>Número CAS:</strong> 77-92-9</p>
+                <p><strong>Número CE:</strong> 201-069-1</p>
+            </div>
+            
+            <h3>Estructura Molecular y Características Estereoquímicas</h3>
+            
+            <p>El ácido cítrico presenta una estructura molecular caracterizada por la presencia de tres grupos carboxilo (-COOH) y un grupo hidroxilo (-OH) unidos a una cadena carbonada de seis átomos. Esta configuración le confiere propiedades ácidas notables y capacidad quelante excepcional. La molécula no posee centros quirales, resultando en una estructura aquiral que facilita su síntesis industrial mediante procesos de fermentación.</p>
+            
+            <p>La geometría molecular del ácido cítrico permite la formación de múltiples enlaces de hidrógeno intramoleculares e intermoleculares, lo que influye significativamente en sus propiedades físicas como punto de fusión, solubilidad y comportamiento en solución acuosa. Los tres grupos carboxílicos presentan valores de pKa diferenciados (pKa₁ = 3.13, pKa₂ = 4.76, pKa₃ = 6.40), lo que determina su comportamiento como ácido poliprótico y su capacidad reguladora de pH en diversos rangos.</p>
+            
+            <h3>Formas de Presentación</h3>
+            
+            <p>El ácido cítrico se comercializa principalmente en dos formas cristalinas:</p>
+            
+            <ul>
+                <li><strong>Forma anhidra (C₆H₈O₇):</strong> Cristales compactos obtenidos mediante cristalización a temperaturas superiores a 36.6°C. Presenta mayor estabilidad al almacenamiento y menor tendencia a la aglomeración.</li>
+                <li><strong>Forma monohidratada (C₆H₈O₇·H₂O):</strong> Cristales que incorporan una molécula de agua en su estructura, obtenidos por cristalización a temperaturas inferiores a 36.6°C. Es la forma más común en aplicaciones alimentarias debido a su mejor fluidez y menor higroscopicidad comparativa.</li>
+            </ul>
+            
+            <p>La transición entre ambas formas está termodinámicamente determinada, siendo reversible mediante control de temperatura y humedad relativa del ambiente de almacenamiento.</p>
+        </section>
+
+        <!-- Propiedades -->
+        <section id="propiedades">
+            <h2>Propiedades Fisicoquímicas</h2>
+            
+            <h3>Propiedades Físicas</h3>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Propiedad</th>
+                            <th>Forma Anhidra</th>
+                            <th>Forma Monohidratada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Estado físico a 25°C</td>
+                            <td>Sólido cristalino</td>
+                            <td>Sólido cristalino</td>
+                        </tr>
+                        <tr>
+                            <td>Apariencia</td>
+                            <td>Cristales incoloros/blancos</td>
+                            <td>Cristales incoloros/blancos</td>
+                        </tr>
+                        <tr>
+                            <td>Punto de fusión</td>
+                            <td>153-159°C</td>
+                            <td>135-152°C</td>
+                        </tr>
+                        <tr>
+                            <td>Densidad</td>
+                            <td>1.665 g/cm³</td>
+                            <td>1.542 g/cm³</td>
+                        </tr>
+                        <tr>
+                            <td>Solubilidad en agua (20°C)</td>
+                            <td>133 g/100 mL</td>
+                            <td>146 g/100 mL</td>
+                        </tr>
+                        <tr>
+                            <td>Solubilidad en etanol</td>
+                            <td>62 g/100 mL</td>
+                            <td>59 g/100 mL</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Propiedades Químicas</h3>
+            
+            <h4>Carácter Ácido y Equilibrios de Disociación</h4>
+            
+            <p>Como ácido triprótico, el ácido cítrico presenta tres constantes de disociación secuenciales en solución acuosa:</p>
+            
+            <div class="info-box">
+                <p><strong>Primera disociación:</strong> H₃Cit ⇌ H₂Cit⁻ + H⁺ (pKa₁ = 3.13)</p>
+                <p><strong>Segunda disociación:</strong> H₂Cit⁻ ⇌ HCit²⁻ + H⁺ (pKa₂ = 4.76)</p>
+                <p><strong>Tercera disociación:</strong> HCit²⁻ ⇌ Cit³⁻ + H⁺ (pKa₃ = 6.40)</p>
+            </div>
+            
+            <p>Esta característica poliprótica confiere al sistema ácido cítrico/citrato propiedades tamponadoras significativas en rangos de pH biológicamente relevantes (pH 3-7), lo que explica su amplio uso como regulador de pH en formulaciones farmacéuticas, cosméticas y alimentarias.</p>
+            
+            <h4>Capacidad Quelante</h4>
+            
+            <p>El ácido cítrico exhibe notable capacidad para formar complejos de coordinación estables con cationes metálicos di y trivalentes (Ca²⁺, Mg²⁺, Fe³⁺, Cu²⁺), fenómeno químicamente denominado quelación. Esta propiedad resulta de la disponibilidad de múltiples sitios de coordinación (grupos carboxilato e hidroxilo) capaces de interactuar con centros metálicos mediante enlaces de coordinación.</p>
+            
+            <p>Las aplicaciones industriales de esta propiedad incluyen:</p>
+            <ul>
+                <li>Prevención de precipitación de sales insolubles en sistemas acuosos</li>
+                <li>Control de turbidez en bebidas y alimentos procesados</li>
+                <li>Mejora de biodisponibilidad de minerales en suplementos nutricionales</li>
+                <li>Inhibición de reacciones de oxidación catalizadas por metales de transición</li>
+                <li>Agente desincrustante en formulaciones de limpieza industrial</li>
+            </ul>
+            
+            <h4>Estabilidad Térmica y Descomposición</h4>
+            
+            <p>A temperaturas superiores a 175°C, el ácido cítrico experimenta descomposición térmica mediante procesos de deshidratación y descarboxilación, generando productos como ácido aconítico, ácido itacónico, anhídrido citracónico y compuestos de degradación menores. Este comportamiento térmico limita su aplicación en procesos que requieren exposición prolongada a altas temperaturas.</p>
+            
+            <h3>Propiedades Toxicológicas y de Seguridad</h3>
+            
+            <p>El ácido cítrico presenta un perfil toxicológico favorable, estando clasificado como sustancia GRAS (Generally Recognized As Safe) por la FDA estadounidense. Estudios toxicológicos exhaustivos no han identificado efectos genotóxicos, mutagénicos ni carcinogénicos en condiciones de exposición normales.</p>
+            
+            <div class="info-box">
+                <p><strong>DL₅₀ oral (rata):</strong> 11,700 mg/kg</p>
+                <p><strong>Clasificación GHS:</strong> No clasificado como peligroso</p>
+                <p><strong>Biodegradabilidad:</strong> Rápidamente biodegradable (>90% en 28 días)</p>
+            </div>
+            
+            <p>No obstante, soluciones concentradas (>20% p/v) pueden causar irritación cutánea y ocular por contacto directo, requiriendo manejo con equipos de protección personal apropiados en entornos industriales.</p>
+        </section>
+
+        <!-- Procesos de Obtención -->
+        <section id="procesos">
+            <h2>Procesos de Obtención del Ácido Cítrico</h2>
+            
+            <p>La producción industrial de ácido cítrico ha experimentado una evolución tecnológica significativa desde el siglo XIX hasta la actualidad. Inicialmente obtenido mediante extracción de frutas cítricas, la producción moderna se basa casi exclusivamente en procesos biotecnológicos de fermentación, que representan aproximadamente el 99% de la producción global.</p>
+            
+            <h3>Evolución Histórica de los Métodos de Producción</h3>
+            
+            <!-- PROCESO 1: Extracción de Cítricos -->
+            <div class="process-item">
+                <div class="process-header">
+                    1. Extracción Directa de Frutas Cítricas (Método Tradicional - Pre-1920)
+                </div>
+                <div class="process-content">
+                    <p><strong>Contexto histórico:</strong> Método predominante desde el descubrimiento del ácido cítrico por Carl Wilhelm Scheele en 1784 hasta el desarrollo de procesos fermentativos industriales.</p>
+                    
+                    <p><strong>Descripción del proceso:</strong></p>
+                    <p>El método se basaba en la extracción del ácido cítrico naturalmente presente en frutas cítricas, principalmente limones sicilianos (Citrus limon), que contienen concentraciones de 5-8% en peso de ácido cítrico en su jugo.</p>
+                    
+                    <!-- Diagrama Interactivo 1 -->
+                    <div class="interactive-diagram-container">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23f5f3e8'/%3E%3Ctext x='400' y='40' font-size='22' text-anchor='middle' fill='%232d5016' font-weight='bold'%3EExtracción de Cítricos (Pre-1920)%3C/text%3E%3Ccircle cx='150' cy='200' r='50' fill='%23d4e157' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='150' y='195' font-size='16' text-anchor='middle' font-weight='bold'%3ELimones%3C/text%3E%3Ctext x='150' y='215' font-size='11' text-anchor='middle'%3E5-8%25 ácido%3C/text%3E%3Cpath d='M 200 200 L 270 200' stroke='%234a7c2c' stroke-width='4' marker-end='url(%23arrow)'/%3E%3Crect x='270' y='160' width='140' height='80' rx='8' fill='%236b9b47' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='340' y='195' font-size='15' text-anchor='middle' fill='white' font-weight='bold'%3EPrensado%3C/text%3E%3Ctext x='340' y='215' font-size='11' text-anchor='middle' fill='white'%3EMecánico%3C/text%3E%3Cpath d='M 410 200 L 480 200' stroke='%234a7c2c' stroke-width='4' marker-end='url(%23arrow)'/%3E%3Crect x='480' y='160' width='140' height='80' rx='8' fill='%23a8c090' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='550' y='190' font-size='14' text-anchor='middle' font-weight='bold'%3EPrecipitación%3C/text%3E%3Ctext x='550' y='210' font-size='11' text-anchor='middle'%3Econ Ca(OH)₂%3C/text%3E%3Cpath d='M 620 200 L 680 200' stroke='%234a7c2c' stroke-width='4' marker-end='url(%23arrow)'/%3E%3Ccircle cx='730' cy='200' r='50' fill='%2352a447' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='730' y='200' font-size='13' text-anchor='middle' fill='white' font-weight='bold'%3EÁcido%3C/text%3E%3Ctext x='730' y='218' font-size='13' text-anchor='middle' fill='white' font-weight='bold'%3ECítrico%3C/text%3E%3Cdefs%3E%3Cmarker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto' markerUnits='strokeWidth'%3E%3Cpath d='M0,0 L0,6 L9,3 z' fill='%234a7c2c'/%3E%3C/marker%3E%3C/defs%3E%3Ctext x='400' y='350' font-size='13' text-anchor='middle' fill='%236a6a6a' font-style='italic'%3ERendimiento: 30-50 kg / tonelada de limones%3C/text%3E%3C/svg%3E" alt="Diagrama de extracción de cítricos">
+                        
+                        <!-- Hotspots interactivos -->
+                        <div class="diagram-hotspot" style="width: 100px; height: 100px; top: 150px; left: 100px;" data-info="limones"></div>
+                        <div class="diagram-hotspot" style="width: 140px; height: 80px; top: 160px; left: 270px;" data-info="prensado"></div>
+                        <div class="diagram-hotspot" style="width: 140px; height: 80px; top: 160px; left: 480px;" data-info="precipitacion1"></div>
+                        <div class="diagram-hotspot" style="width: 100px; height: 100px; top: 150px; left: 680px;" data-info="producto1"></div>
+                        
+                        <p class="diagram-hint">Haz clic en los elementos del diagrama para ver detalles técnicos de cada etapa</p>
+                    </div>
+                    
+                    <p><strong>Rendimiento y limitaciones:</strong> Rendimiento típico de 30-50 kg de ácido cítrico por tonelada de limones procesados. Limitaciones: dependencia estacional, costos elevados de materia prima, variabilidad de calidad, logística compleja de aprovisionamiento.</p>
+                    
+                    <p><strong>Declive del método:</strong> La producción mediante extracción directa resultó económicamente insostenible con el desarrollo de métodos fermentativos, siendo prácticamente abandonada para producción industrial a partir de 1930.</p>
+                </div>
+            </div>
+
+            <!-- PROCESO 2: Fermentación Líquida Sumergida -->
+            <div class="process-item">
+                <div class="process-header">
+                    2. Fermentación Sumergida con Aspergillus niger (Método Predominante Actual)
+                </div>
+                <div class="process-content">
+                    <p><strong>Desarrollo histórico:</strong> Desarrollado por James Currie en 1917 y comercializado por Pfizer desde 1919. Representa actualmente >90% de la producción mundial.</p>
+                    
+                    <p><strong>Fundamento biotecnológico:</strong></p>
+                    <p>El proceso se basa en la capacidad metabólica de cepas seleccionadas del hongo filamentoso <em>Aspergillus niger</em> para acumular ácido cítrico como metabolito extracelular bajo condiciones controladas de fermentación aeróbica.</p>
+                    
+                    <!-- Diagrama Interactivo 2 -->
+                    <div class="interactive-diagram-container">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 550'%3E%3Crect width='800' height='550' fill='%23f5f3e8'/%3E%3Ctext x='400' y='40' font-size='22' text-anchor='middle' fill='%232d5016' font-weight='bold'%3EFermentación Sumergida (Método Actual)%3C/text%3E%3Crect x='50' y='100' width='120' height='100' rx='8' fill='%23d4e157' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='110' y='140' font-size='15' text-anchor='middle' font-weight='bold'%3ESustrato%3C/text%3E%3Ctext x='110' y='160' font-size='11' text-anchor='middle'%3EMelaza/%3C/text%3E%3Ctext x='110' y='175' font-size='11' text-anchor='middle'%3EGlucosa%3C/text%3E%3Cpath d='M 170 150 L 230 150' stroke='%234a7c2c' stroke-width='4' marker-end='url(%23arrow2)'/%3E%3Ccircle cx='350' cy='220' r='90' fill='%236b9b47' stroke='%232d5016' stroke-width='4'/%3E%3Ctext x='350' y='200' font-size='17' text-anchor='middle' fill='white' font-weight='bold'%3EBiorreactor%3C/text%3E%3Ctext x='350' y='225' font-size='13' text-anchor='middle' fill='white'%3EAspergillus niger%3C/text%3E%3Ctext x='350' y='245' font-size='11' text-anchor='middle' fill='white'%3E28-32°C, pH 2-3%3C/text%3E%3Cpath d='M 440 220 L 510 220' stroke='%234a7c2c' stroke-width='4' marker-end='url(%23arrow2)'/%3E%3Crect x='510' y='170' width='120' height='100' rx='8' fill='%23a8c090' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='570' y='210' font-size='15' text-anchor='middle' font-weight='bold'%3ESeparación%3C/text%3E%3Ctext x='570' y='230' font-size='11' text-anchor='middle'%3EFiltración%3C/text%3E%3Ctext x='570' y='245' font-size='11' text-anchor='middle'%3Ede biomasa%3C/text%3E%3Cpath d='M 630 220 L 690 220' stroke='%234a7c2c' stroke-width='4' marker-end='url(%23arrow2)'/%3E%3Crect x='50' y='350' width='120' height='100' rx='8' fill='%2352a447' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='110' y='390' font-size='15' text-anchor='middle' fill='white' font-weight='bold'%3EPurificación%3C/text%3E%3Ctext x='110' y='410' font-size='11' text-anchor='middle' fill='white'%3ECristalización%3C/text%3E%3Cpath d='M 350 130 L 350 80' stroke='%234a7c2c' stroke-width='3' stroke-dasharray='8,4' marker-end='url(%23arrow2)'/%3E%3Ctext x='380' y='100' font-size='12' fill='%232d5016' font-weight='bold'%3EAireación%3C/text%3E%3Ctext x='385' y='115' font-size='10' fill='%232d5016'%3E0.5-1.5 vvm%3C/text%3E%3Cpath d='M 690 220 L 720 220 L 720 400 L 170 400' stroke='%234a7c2c' stroke-width='3' marker-end='url(%23arrow2)'/%3E%3Cdefs%3E%3Cmarker id='arrow2' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto' markerUnits='strokeWidth'%3E%3Cpath d='M0,0 L0,6 L9,3 z' fill='%234a7c2c'/%3E%3C/marker%3E%3C/defs%3E%3Ctext x='400' y='500' font-size='14' text-anchor='middle' fill='%232d5016' font-weight='bold'%3EEcuación: C₆H₁₂O₆ + 3O₂ → C₆H₈O₇ + 2H₂O + 2CO₂%3C/text%3E%3C/svg%3E" alt="Diagrama de fermentación sumergida">
+                        
+                        <!-- Hotspots interactivos -->
+                        <div class="diagram-hotspot" style="width: 120px; height: 100px; top: 100px; left: 50px;" data-info="sustrato"></div>
+                        <div class="diagram-hotspot" style="width: 180px; height: 180px; top: 130px; left: 260px;" data-info="biorreactor"></div>
+                        <div class="diagram-hotspot" style="width: 120px; height: 100px; top: 170px; left: 510px;" data-info="separacion"></div>
+                        <div class="diagram-hotspot" style="width: 120px; height: 100px; top: 350px; left: 50px;" data-info="purificacion"></div>
+                        
+                        <p class="diagram-hint">Haz clic en los elementos del diagrama para ver detalles técnicos de cada etapa</p>
+                    </div>
+                    
+                    <p><strong>Parámetros de proceso optimizados:</strong></p>
+                    <ul>
+                        <li>Temperatura: 28-32°C</li>
+                        <li>pH: 2.0-3.5 (control riguroso esencial)</li>
+                        <li>Concentración de sustrato: 15-25% (p/v)</li>
+                        <li>Aireación: 0.5-1.5 vvm (volumen de aire por volumen de medio por minuto)</li>
+                        <li>Tiempo de fermentación: 5-10 días</li>
+                        <li>Productividad: 0.8-1.2 kg ácido cítrico/kg sustrato consumido</li>
+                    </ul>
+                    
+                    <p><strong>Ventajas del proceso:</strong> Alta productividad volumétrica, control preciso de condiciones, escalabilidad a reactores de gran volumen (100-500 m³), independencia de estacionalidad agrícola.</p>
+                </div>
+            </div>
+
+            <!-- PROCESO 3: Fermentación Superficial -->
+            <div class="process-item">
+                <div class="process-header">
+                    3. Fermentación en Estado Sólido o Superficial (Método Alternativo)
+                </div>
+                <div class="process-content">
+                    <p><strong>Características del proceso:</strong></p>
+                    <p>Variante tecnológica donde <em>Aspergillus niger</em> crece en la superficie de sustratos sólidos o semi-sólidos en condiciones aeróbicas sin fase líquida libre significativa.</p>
+                    
+                    <!-- Diagrama Interactivo 3 -->
+                    <div class="interactive-diagram-container">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%23f5f3e8'/%3E%3Ctext x='400' y='40' font-size='22' text-anchor='middle' fill='%232d5016' font-weight='bold'%3EFermentación Superficial (Estado Sólido)%3C/text%3E%3Crect x='100' y='100' width='600' height='280' rx='10' fill='%23e8ead0' stroke='%232d5016' stroke-width='4'/%3E%3Ctext x='400' y='135' font-size='16' text-anchor='middle' fill='%232d5016' font-weight='bold'%3ECámara de Fermentación%3C/text%3E%3Crect x='150' y='170' width='500' height='40' rx='5' fill='%238b6f47' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='400' y='195' font-size='14' text-anchor='middle' fill='white' font-weight='bold'%3ESustrato Sólido (Salvado, bagazo, residuos)%3C/text%3E%3Cellipse cx='200' cy='230' rx='18' ry='10' fill='%234a7c2c' opacity='0.7'/%3E%3Cellipse cx='250' cy='230' rx='18' ry='10' fill='%234a7c2c' opacity='0.7'/%3E%3Cellipse cx='300' cy='230' rx='18' ry='10' fill='%234a7c2c' opacity='0.7'/%3E%3Cellipse cx='350' cy='230' rx='18' ry='10' fill='%234a7c2c' opacity='0.7'/%3E%3Cellipse cx='400' cy='230' rx='18' ry='10' fill='%234a7c2c' opacity='0.7'/%3E%3Cellipse cx='450' cy='230' rx='18' ry='10' fill='%234a7c2c' opacity='0.7'/%3E%3Cellipse cx='500' cy='230' rx='18' ry='10' fill='%234a7c2c' opacity='0.7'/%3E%3Cellipse cx='550' cy='230' rx='18' ry='10' fill='%234a7c2c' opacity='0.7'/%3E%3Cellipse cx='600' cy='230' rx='18' ry='10' fill='%234a7c2c' opacity='0.7'/%3E%3Cpath d='M 180 245 Q 190 260 200 245 Q 210 260 220 245 Q 230 260 240 245' stroke='%232d5016' stroke-width='2' fill='none'/%3E%3Cpath d='M 280 245 Q 290 260 300 245 Q 310 260 320 245' stroke='%232d5016' stroke-width='2' fill='none'/%3E%3Cpath d='M 380 245 Q 390 260 400 245 Q 410 260 420 245' stroke='%232d5016' stroke-width='2' fill='none'/%3E%3Cpath d='M 480 245 Q 490 260 500 245 Q 510 260 520 245' stroke='%232d5016' stroke-width='2' fill='none'/%3E%3Cpath d='M 580 245 Q 590 260 600 245 Q 610 260 620 245' stroke='%232d5016' stroke-width='2' fill='none'/%3E%3Ctext x='400' y='285' font-size='13' text-anchor='middle' fill='%232d5016' font-weight='bold'%3EMicelio de Aspergillus niger en superficie%3C/text%3E%3Cpath d='M 100 320 L 130 320' stroke='%234a7c2c' stroke-width='3' marker-end='url(%23arrow3)'/%3E%3Ctext x='60' y='325' font-size='12' fill='%232d5016' font-weight='bold'%3EAire%3C/text%3E%3Cpath d='M 700 320 L 670 320' stroke='%23c44' stroke-width='3' marker-start='url(%23arrow3)'/%3E%3Ctext x='720' y='325' font-size='12' fill='%23c44' font-weight='bold'%3ECO₂%3C/text%3E%3Ctext x='400' y='350' font-size='12' text-anchor='middle' fill='%232d5016'%3ECondiciones: 25-30°C, Humedad 70-80%25, pH 4.5-6.0 inicial%3C/text%3E%3Cdefs%3E%3Cmarker id='arrow3' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto' markerUnits='strokeWidth'%3E%3Cpath d='M0,0 L0,6 L9,3 z' fill='%234a7c2c'/%3E%3C/marker%3E%3C/defs%3E%3Ctext x='400' y='450' font-size='13' text-anchor='middle' fill='%236a6a6a' font-style='italic'%3ETiempo: 7-12 días | Rendimiento: 0.3-0.6 kg/kg sustrato%3C/text%3E%3C/svg%3E" alt="Diagrama de fermentación superficial">
+                        
+                        <!-- Hotspots interactivos -->
+                        <div class="diagram-hotspot" style="width: 600px; height: 280px; top: 100px; left: 100px;" data-info="camara"></div>
+                        <div class="diagram-hotspot" style="width: 500px; height: 40px; top: 170px; left: 150px;" data-info="sustrato-solido"></div>
+                        <div class="diagram-hotspot" style="width: 470px; height: 80px; top: 220px; left: 165px;" data-info="micelio"></div>
+                        
+                        <p class="diagram-hint">Haz clic en los elementos del diagrama para ver detalles técnicos de cada etapa</p>
+                    </div>
+                    
+                    <p><strong>Condiciones operacionales:</strong></p>
+                    <ul>
+                        <li>Sustrato: Salvado de trigo, bagazo de caña, residuos agroindustriales</li>
+                        <li>Temperatura: 25-30°C</li>
+                        <li>Humedad del sustrato: 70-80%</li>
+                        <li>Tiempo de proceso: 7-12 días</li>
+                        <li>Espesor de capa: 5-15 cm</li>
+                    </ul>
+                    
+                    <p><strong>Ventajas:</strong> Menor consumo energético, uso de residuos agroindustriales, menor generación de efluentes líquidos.</p>
+                    <p><strong>Limitaciones:</strong> Dificultad de control de parámetros, menor productividad volumétrica, escalado industrial complejo, mayor riesgo de contaminación.</p>
+                </div>
+            </div>
+
+            <!-- PROCESO 4: Síntesis Química -->
+            <div class="process-item">
+                <div class="process-header">
+                    4. Síntesis Química a partir de Acetona (Proceso Histórico Descontinuado)
+                </div>
+                <div class="process-content">
+                    <p><strong>Desarrollo histórico:</strong> Desarrollado durante el siglo XX como alternativa a la fermentación, pero descontinuado comercialmente debido a costos superiores y menor eficiencia económica.</p>
+                    
+                    <p><strong>Ruta sintética:</strong></p>
+                    <p>El proceso se basaba en la síntesis química multi-etapa partiendo de acetona (CH₃COCH₃) como materia prima principal.</p>
+                    
+                    <!-- Diagrama Interactivo 4 -->
+                    <div class="interactive-diagram-container">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23f5f3e8'/%3E%3Ctext x='400' y='40' font-size='22' text-anchor='middle' fill='%232d5016' font-weight='bold'%3ESíntesis Química (Descontinuado)%3C/text%3E%3Ccircle cx='100' cy='200' r='50' fill='%23d4e157' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='100' y='200' font-size='15' text-anchor='middle' font-weight='bold'%3EAcetona%3C/text%3E%3Ctext x='100' y='220' font-size='10' text-anchor='middle'%3ECH₃COCH₃%3C/text%3E%3Cpath d='M 150 200 L 220 200' stroke='%234a7c2c' stroke-width='4' marker-end='url(%23arrow4)'/%3E%3Crect x='220' y='160' width='120' height='80' rx='8' fill='%236b9b47' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='280' y='190' font-size='14' text-anchor='middle' fill='white' font-weight='bold'%3EReactor 1%3C/text%3E%3Ctext x='280' y='210' font-size='11' text-anchor='middle' fill='white'%3ECianación%3C/text%3E%3Ctext x='280' y='225' font-size='9' text-anchor='middle' fill='white'%3E+ HCN%3C/text%3E%3Cpath d='M 340 200 L 410 200' stroke='%234a7c2c' stroke-width='4' marker-end='url(%23arrow4)'/%3E%3Crect x='410' y='160' width='120' height='80' rx='8' fill='%236b9b47' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='470' y='190' font-size='14' text-anchor='middle' fill='white' font-weight='bold'%3EReactor 2%3C/text%3E%3Ctext x='470' y='210' font-size='11' text-anchor='middle' fill='white'%3EHidrólisis%3C/text%3E%3Ctext x='470' y='225' font-size='9' text-anchor='middle' fill='white'%3Emulti-etapa%3C/text%3E%3Cpath d='M 530 200 L 600 200' stroke='%234a7c2c' stroke-width='4' marker-end='url(%23arrow4)'/%3E%3Crect x='600' y='160' width='120' height='80' rx='8' fill='%23a8c090' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='660' y='195' font-size='13' text-anchor='middle' font-weight='bold'%3EPurificación%3C/text%3E%3Ctext x='660' y='215' font-size='10' text-anchor='middle'%3ECristalización%3C/text%3E%3Ctext x='660' y='228' font-size='10' text-anchor='middle'%3Emúltiple%3C/text%3E%3Ccircle cx='100' cy='350' r='50' fill='%2352a447' stroke='%232d5016' stroke-width='3'/%3E%3Ctext x='100' y='345' font-size='13' text-anchor='middle' fill='white' font-weight='bold'%3EÁcido%3C/text%3E%3Ctext x='100' y='365' font-size='13' text-anchor='middle' fill='white' font-weight='bold'%3ECítrico%3C/text%3E%3Cpath d='M 720 200 L 750 200 L 750 350 L 150 350' stroke='%234a7c2c' stroke-width='3' marker-end='url(%23arrow4)'/%3E%3Cdefs%3E%3Cmarker id='arrow4' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto' markerUnits='strokeWidth'%3E%3Cpath d='M0,0 L0,6 L9,3 z' fill='%234a7c2c'/%3E%3C/marker%3E%3C/defs%3E%3Ctext x='400' y='420' font-size='14' text-anchor='middle' fill='%23c44' font-weight='bold'%3E⚠ Proceso descontinuado por costos elevados y uso de reactivos tóxicos%3C/text%3E%3C/svg%3E" alt="Diagrama de síntesis química">
+                        
+                        <!-- Hotspots interactivos -->
+                        <div class="diagram-hotspot" style="width: 100px; height: 100px; top: 150px; left: 50px;" data-info="acetona"></div>
+                        <div class="diagram-hotspot" style="width: 120px; height: 80px; top: 160px; left: 220px;" data-info="reactor1"></div>
+                        <div class="diagram-hotspot" style="width: 120px; height: 80px; top: 160px; left: 410px;" data-info="reactor2"></div>
+                        <div class="diagram-hotspot" style="width: 120px; height: 80px; top: 160px; left: 600px;" data-info="purificacion-quim"></div>
+                        <div class="diagram-hotspot" style="width: 100px; height: 100px; top: 300px; left: 50px;" data-info="producto-quim"></div>
+                        
+                        <p class="diagram-hint">Haz clic en los elementos del diagrama para ver detalles técnicos de cada etapa</p>
+                    </div>
+                    
+                    <p><strong>Razones de descontinuación:</strong></p>
+                    <ul>
+                        <li>Costos de materias primas derivadas del petróleo significativamente superiores</li>
+                        <li>Mayor complejidad de proceso y número de etapas unitarias</li>
+                        <li>Generación de residuos químicos de difícil tratamiento</li>
+                        <li>Rendimientos globales inferiores a procesos fermentativos</li>
+                        <li>Aspectos regulatorios favoreciendo productos de origen biotecnológico</li>
+                    </ul>
+                    
+                    <p><strong>Situación actual:</strong> No existen plantas comerciales operativas basadas en síntesis química. La producción global se realiza mediante fermentación biotecnológica.</p>
+                </div>
+            </div>
+
+            <h3>Tendencias Actuales en Producción</h3>
+            
+            <p>La industria del ácido cítrico continúa evolucionando hacia procesos más sostenibles mediante:</p>
+            
+            <ul>
+                <li>Utilización de residuos agroindustriales como sustratos (economía circular)</li>
+                <li>Desarrollo de cepas mejoradas mediante ingeniería metabólica</li>
+                <li>Optimización de parámetros de proceso mediante modelado matemático</li>
+                <li>Integración de procesos de recuperación y purificación más eficientes</li>
+                <li>Reducción de consumos energéticos y generación de efluentes</li>
+            </ul>
+        </section>
+
+        <!-- Aplicaciones -->
+        <section id="aplicaciones">
+            <h2>Aplicaciones Industriales del Ácido Cítrico</h2>
+            
+            <p>El ácido cítrico presenta una versatilidad funcional excepcional que justifica su utilización transversal en múltiples sectores industriales. Su producción global supera las 2.5 millones de toneladas anuales, distribuyéndose en diversos mercados especializados.</p>
+            
+            <h3>1. Industria Alimentaria y de Bebidas (60-65% del mercado global)</h3>
+            
+            <h4>Funciones principales:</h4>
+            
+            <p><strong>Acidulante y regulador de pH:</strong> El ácido cítrico es el acidulante más utilizado en la industria alimentaria debido a su perfil sensorial limpio, ausencia de retrogusto metálico y capacidad reguladora de pH en rangos de interés alimentario (pH 2.5-6.5). Su uso permite el control preciso de acidez en productos como:</p>
+            <ul>
+                <li>Bebidas carbonatadas y no carbonatadas</li>
+                <li>Néctares y jugos de frutas</li>
+                <li>Productos lácteos fermentados</li>
+                <li>Productos de confitería</li>
+            </ul>
+            
+            <p><strong>Antioxidante sinérgico:</strong> Aunque no es antioxidante primario, el ácido cítrico potencia la efectividad de antioxidantes fenólicos y ascorbato mediante quelación de iones metálicos pro-oxidantes (Fe³⁺, Cu²⁺), previniendo oxidación lipídica y pardeamiento enzimático en:</p>
+            <ul>
+                <li>Frutas y vegetales procesados</li>
+                <li>Aceites y grasas comestibles</li>
+                <li>Productos cárnicos y pesqueros</li>
+            </ul>
+            
+            <p><strong>Potenciador de sabor:</strong> Contribuye a perfil sensorial ácido característico en productos de confitería, bebidas y alimentos procesados, mejorando percepción de frescura y aceptabilidad organoléptica.</p>
+            
+            <p><strong>Agente conservante:</strong> Reduce el pH a niveles que inhiben crecimiento microbiano, especialmente de bacterias patógenas y alterantes. Efectivo contra <em>Clostridium botulinum</em>, <em>Salmonella</em> spp., y bacterias esporuladas.</p>
+            
+            <h3>2. Industria Farmacéutica (10-12% del mercado)</h3>
+            
+            <p>El ácido cítrico desempeña roles críticos en formulaciones farmacéuticas:</p>
+            
+            <ul>
+                <li><strong>Agente efervescente:</strong> En combinación con bicarbonato de sodio, genera CO₂ en tabletas efervescentes, mejorando palatabilidad y facilitando administración oral.</li>
+                <li><strong>Anticoagulante in vitro:</strong> Componente esencial de soluciones anticoagulantes para conservación de sangre y hemoderivados (soluciones citrato-fosfato-dextrosa).</li>
+                <li><strong>Regulador de pH:</strong> Control de pH en formulaciones parenterales, oftálmicas y tópicas para optimizar estabilidad de principios activos y compatibilidad fisiológica.</li>
+                <li><strong>Agente quelante:</strong> Mejora biodisponibilidad de minerales (calcio, hierro, magnesio) en suplementos nutricionales mediante formación de complejos solubles.</li>
+                <li><strong>Estabilizante:</strong> Previene degradación oxidativa de vitaminas y principios activos sensibles en formulaciones líquidas y sólidas.</li>
+            </ul>
+            
+            <h3>3. Industria de Detergentes y Limpiadores (8-10% del mercado)</h3>
+            
+            <p>Aplicaciones en formulaciones de limpieza:</p>
+            
+            <ul>
+                <li><strong>Agente quelante biodegradable:</strong> Sustituto ecológico de fosfatos en detergentes, secuestrando iones Ca²⁺ y Mg²⁺ responsables de dureza del agua.</li>
+                <li><strong>Removedor de incrustaciones:</strong> Disolución efectiva de depósitos calcáreos, óxidos metálicos y sales insolubles en limpiadores industriales y domésticos.</li>
+                <li><strong>Regulador de pH:</strong> Control de alcalinidad en formulaciones de limpieza multiuso.</li>
+                <li><strong>Potenciador de surfactantes:</strong> Mejora eficiencia de tensioactivos mediante quelación de iones interferentes.</li>
+            </ul>
+            
+            <h3>4. Industria Cosmética y de Cuidado Personal (5-7% del mercado)</h3>
+            
+            <p>Funciones en formulaciones cosméticas:</p>
+            
+            <ul>
+                <li><strong>Regulador de pH:</strong> Ajuste de pH a valores compatibles con piel (4.5-6.5) en champús, acondicionadores, cremas y lociones.</li>
+                <li><strong>Agente quelante:</strong> Prevención de degradación oxidativa de fragancias y principios activos por trazas metálicas.</li>
+                <li><strong>Exfoliante químico (α-hidroxiácido):</strong> Promoción de renovación celular epidérmica en productos de cuidado facial.</li>
+                <li><strong>Antioxidante sinérgico:</strong> Protección de formulaciones contra degradación oxidativa.</li>
+                <li><strong>Agente efervescente:</strong> Componente de bombas de baño y productos efervescentes.</li>
+            </ul>
+            
+            <h3>5. Otras Aplicaciones Industriales</h3>
+            
+            <h4>Industria Química:</h4>
+            <ul>
+                <li>Materia prima para síntesis de citratos (sodio, potasio, calcio)</li>
+                <li>Agente quelante en procesos de galvanoplastia</li>
+                <li>Catalizador y reactivo en síntesis orgánicas</li>
+            </ul>
+            
+            <h4>Agricultura:</h4>
+            <ul>
+                <li>Acidificante de suelos alcalinos</li>
+                <li>Potenciador de absorción de micronutrientes por quelación</li>
+                <li>Componente de fertilizantes líquidos</li>
+            </ul>
+            
+            <h4>Industria Textil:</h4>
+            <ul>
+                <li>Neutralización de baños alcalinos post-proceso</li>
+                <li>Agente quelante en procesos de tintura</li>
+                <li>Estabilización de peróxidos en blanqueo textil</li>
+            </ul>
+            
+            <h4>Tratamiento de Aguas:</h4>
+            <ul>
+                <li>Agente desincrustante biodegradable</li>
+                <li>Neutralizante de efluentes alcalinos</li>
+                <li>Control de corrosión en sistemas de refrigeración</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p><strong>Perspectivas futuras:</strong> Se proyecta crecimiento continuo de demanda global de ácido cítrico (4-5% anual) impulsado por tendencias de productos "naturales", "limpios" y biodegradables, particularmente en mercados de alimentos, limpieza y cuidado personal. El desarrollo de aplicaciones en bioplásticos, biorremediación y química verde representa oportunidades emergentes de mercado.</p>
+            </div>
+        </section>
+
+        <!-- Impacto Ambiental -->
+        <section id="impacto">
+            <h2>Seguridad, Regulación e Impacto Ambiental</h2>
+            
+            <h3>Aspectos de Seguridad y Toxicología</h3>
+            
+            <p>El ácido cítrico presenta un perfil toxicológico altamente favorable, avalado por décadas de uso seguro y evaluaciones científicas rigurosas:</p>
+            
+            <div class="info-box">
+                <p><strong>Clasificación regulatoria:</strong></p>
+                <ul>
+                    <li><strong>FDA (Estados Unidos):</strong> GRAS (Generally Recognized As Safe) - 21 CFR §184.1033</li>
+                    <li><strong>Unión Europea:</strong> E 330 (aditivo alimentario aprobado) - Reglamento (CE) 1333/2008</li>
+                    <li><strong>JECFA (FAO/OMS):</strong> ADI (Ingesta Diaria Aceptable): No especificada - Sin limitación por razones de seguridad</li>
+                </ul>
+            </div>
+            
+            <p><strong>Datos toxicológicos relevantes:</strong></p>
+            <ul>
+                <li>DL₅₀ oral (rata): 11,700 mg/kg - Toxicidad aguda muy baja</li>
+                <li>DL₅₀ dérmica (conejo): >5,000 mg/kg</li>
+                <li>Estudios de genotoxicidad: Negativos (test de Ames, aberraciones cromosómicas)</li>
+                <li>Estudios de carcinogenicidad: Negativos en roedores (OCDE, 2001)</li>
+                <li>Irritación cutánea: Mínima a moderada en concentraciones >20%</li>
+                <li>Irritación ocular: Moderada en soluciones concentradas, reversible</li>
+            </ul>
+            
+            <h3>Normativa y Regulación Internacional</h3>
+            
+            <p>El ácido cítrico está sujeto a marcos regulatorios específicos según su aplicación:</p>
+            
+            <h4>Sector Alimentario:</h4>
+            <ul>
+                <li>Uso permitido sin limitación cuantitativa en la mayoría de categorías alimentarias</li>
+                <li>Etiquetado obligatorio como E 330 en Unión Europea</li>
+                <li>Cumplimiento de especificaciones de pureza (FCC, USP, Ph. Eur.)</li>
+            </ul>
+            
+            <h4>Sector Farmacéutico:</h4>
+            <ul>
+                <li>Inclusión en farmacopeas oficiales (USP, Ph. Eur., JP)</li>
+                <li>Especificaciones de pureza y límites de impurezas estrictos</li>
+                <li>Requerimientos de GMP (Good Manufacturing Practices) en producción</li>
+            </ul>
+            
+            <h4>Sector Cosmético:</h4>
+            <ul>
+                <li>Aprobado como ingrediente cosmético (CIR - Cosmetic Ingredient Review)</li>
+                <li>Concentraciones típicas: 0.01-5.0% en formulaciones</li>
+                <li>Requerimientos de etiquetado según regulaciones locales</li>
+            </ul>
+            
+            <h3>Impacto Ambiental y Sostenibilidad</h3>
+            
+            <p><strong>Biodegradabilidad:</strong></p>
+            <p>El ácido cítrico presenta biodegradación rápida y completa en condiciones aeróbicas, siendo metabolizado eficientemente por microorganismos ambientales:</p>
+            
+            <ul>
+                <li>Biodegradación >90% en 28 días (test OECD 301)</li>
+                <li>Degradación primaria >95% en 7 días en sistemas acuáticos</li>
+                <li>No bioacumulativo (log Kow = -1.72)</li>
+                <li>No persistente en suelos ni sedimentos</li>
+            </ul>
+            
+            <p><strong>Ecotoxicidad:</strong></p>
+            <ul>
+                <li>EC₅₀ (Daphnia magna, 48h): >1,000 mg/L - Prácticamente no tóxico</li>
+                <li>LC₅₀ (peces, 96h): >1,000 mg/L - Prácticamente no tóxico</li>
+                <li>ErC₅₀ (algas, 72h): >100 mg/L - Baja toxicidad</li>
+            </ul>
+            
+            <p><strong>Sostenibilidad del proceso productivo:</strong></p>
+            
+            <div class="highlight-box">
+                <p>La producción biotecnológica de ácido cítrico mediante fermentación presenta ventajas ambientales significativas respecto a rutas sintéticas petroquímicas:</p>
+                <ul>
+                    <li>Uso de materias primas renovables (melazas, almidones)</li>
+                    <li>Menor consumo energético (procesos a temperatura ambiente-moderada)</li>
+                    <li>Menor generación de residuos químicos peligrosos</li>
+                    <li>Potencial para valorización de residuos agroindustriales (economía circular)</li>
+                    <li>Emisiones de GEI significativamente menores vs. síntesis química</li>
+                </ul>
+            </div>
+            
+            <p><strong>Gestión de residuos y efluentes:</strong></p>
+            <p>Las plantas de producción implementan sistemas de tratamiento que incluyen:</p>
+            <ul>
+                <li>Recuperación de biomasa fúngica para alimentación animal o compostaje</li>
+                <li>Tratamiento biológico de efluentes líquidos (alta biodegradabilidad)</li>
+                <li>Reciclaje de agua de proceso</li>
+                <li>Recuperación de subproductos valiosos (micoproteínas, enzimas)</li>
+            </ul>
+            
+            <h3>Manejo Seguro y Equipos de Protección</h3>
+            
+            <p>Aunque el ácido cítrico presenta baja toxicidad, su manejo industrial requiere precauciones estándar:</p>
+            
+            <ul>
+                <li><strong>Protección respiratoria:</strong> Máscaras antipolvo (P2) en áreas de manipulación de producto seco</li>
+                <li><strong>Protección ocular:</strong> Gafas de seguridad para prevenir contacto con polvos o soluciones</li>
+                <li><strong>Protección cutánea:</strong> Guantes de nitrilo o vinilo en manipulación de soluciones concentradas</li>
+                <li><strong>Ventilación:</strong> Adecuada en áreas de proceso para control de polvos</li>
+                <li><strong>Almacenamiento:</strong> Áreas secas, ventiladas, protegidas de humedad, temperatura <30°C</li>
+            </ul>
+            
+            <p><strong>Primeros auxilios:</strong></p>
+            <ul>
+                <li>Contacto ocular: Lavado abundante con agua durante 15 minutos</li>
+                <li>Contacto cutáneo: Lavado con agua y jabón</li>
+                <li>Ingestión: Enjuagar boca, beber agua, no provocar vómito</li>
+                <li>Inhalación de polvos: Trasladar a zona ventilada</li>
+            </ul>
+        </section>
+
+        <!-- Conclusión -->
+        <section id="conclusion">
+            <h2>Conclusión</h2>
+            
+            <p>El ácido cítrico representa un compuesto orgánico de extraordinaria relevancia tanto desde perspectivas bioquímicas fundamentales como industriales aplicadas. Su posición dual como intermediario metabólico esencial en el ciclo de Krebs y como producto industrial de amplio espectro funcional ilustra la convergencia entre procesos biológicos naturales y aplicaciones tecnológicas desarrolladas por el ser humano.</p>
+            
+            <p>El análisis técnico presentado evidencia que el ácido cítrico constituye significativamente más que un simple acidulante alimentario: es un compuesto multifuncional cuyas propiedades fisicoquímicas singulares (carácter poliprótico, capacidad quelante, biodegradabilidad, perfil toxicológico favorable) sustentan su utilización transversal en sectores tan diversos como alimentos, farmacéutica, cosmética, química industrial, agricultura y tratamiento de aguas.</p>
+            
+            <p>La evolución histórica de sus métodos productivos, desde extracción directa de cítricos hasta procesos biotecnológicos de fermentación optimizados, representa un caso de estudio ejemplar de desarrollo tecnológico orientado por criterios de eficiencia económica, sostenibilidad ambiental y escalabilidad industrial. La hegemonía actual de procesos fermentativos basados en <em>Aspergillus niger</em> (>99% de producción global) demuestra las ventajas competitivas de la biotecnología industrial frente a rutas sintéticas petroquímicas en términos de rendimiento, costos y sostenibilidad.</p>
+            
+            <p>Los aspectos regulatorios y de seguridad analizados confirman la robustez científica del conocimiento sobre este compuesto, respaldado por décadas de uso seguro, evaluaciones toxicológicas exhaustivas y marcos normativos internacionales consistentes. Su clasificación GRAS y la ausencia de límites de ingesta diaria aceptable (ADI) por organismos internacionales (JECFA, EFSA) fundamentan su uso seguro en aplicaciones de contacto humano directo.</p>
+            
+            <p>Desde perspectivas de sostenibilidad, el ácido cítrico presenta características ambientales favorables: biodegradación rápida y completa, ecotoxicidad muy baja, y producción mediante procesos biotecnológicos de menor impacto ambiental comparativo. Las tendencias actuales hacia economía circular, mediante utilización de residuos agroindustriales como sustratos fermentativos, posicionan su producción dentro de paradigmas de bioeconomía y química verde.</p>
+            
+            <p>La producción mundial actual superior a 2.5 millones de toneladas anuales, su perfil toxicológico favorable (clasificación GRAS), y su biodegradabilidad completa posicionan al ácido cítrico como compuesto modelo para el desarrollo de procesos industriales sostenibles. El conocimiento científico riguroso sobre este compuesto resulta indispensable para ingenieros químicos y profesionales de industrias afines, dado su impacto transversal en múltiples sectores productivos y su contribución al desarrollo de tecnologías limpias y economía circular.</p>
+        </section>
+
+        <!-- Bibliografía -->
+        <section id="bibliografia" class="bibliography">
+            <h2>Bibliografía</h2>
+            
+            <div class="reference">
+                <p>Autoridad Europea de Seguridad Alimentaria (EFSA). (2016). Reevaluación del ácido cítrico (E 330), citratos de sodio (E 331), citratos de potasio (E 332) y citratos de calcio (E 333) como aditivos alimentarios. <em>EFSA Journal</em>, <em>14</em>(2), 1–62. https://doi.org/10.2903/j.efsa.2016.4426</p>
+            </div>
+            
+            <div class="reference">
+                <p>ChemicalBook. (s. f.). <em>Ácido cítrico – Propiedades químicas</em>. https://www.chemicalbook.com/ChemicalProductProperty_EN_CB9854361.htm</p>
+            </div>
+            
+            <div class="reference">
+                <p>Clínica Universidad de Navarra. (2025). Ácido cítrico. En <em>Diccionario médico</em>. https://www.cun.es/diccionario-medico/terminos/acido-citrico</p>
+            </div>
+            
+            <div class="reference">
+                <p>European Chemicals Agency. (s. f.). <em>Ácido cítrico – Información de la sustancia</em>. https://echa.europa.eu/es/substance-information/-/substanceinfo/100.000.051</p>
+            </div>
+            
+            <div class="reference">
+                <p>Flores, A., & Aranda, M. (2010). Producción de ácido cítrico por <em>Aspergillus niger</em>: Fundamentos biotecnológicos. <em>Revista de la Sociedad Química del Perú</em>, <em>76</em>(3), 279–292.</p>
+            </div>
+            
+            <div class="reference">
+                <p>Havlin, J. L., Tisdale, S. L., Nelson, W. L., & Beaton, J. D. (2014). <em>Fertilidad del suelo y fertilizantes: Introducción al manejo de nutrientes</em> (8.ª ed.). Pearson Educación.</p>
+            </div>
+            
+            <div class="reference">
+                <p>KlarChem. (s. f.). <em>Ácido cítrico – Aplicaciones industriales</em>. https://klarchem.com/industrial/products/citric-acid</p>
+            </div>
+            
+            <div class="reference">
+                <p>Knowde. (s. f.). <em>Ácido cítrico en alimentos y nutrición</em>. https://periodical.knowde.com/citric-acid-in-food-and-nutrition/</p>
+            </div>
+            
+            <div class="reference">
+                <p>Mármol Pérez, Z., & Páez, G. (2006). Producción de ácido cítrico por fermentación: Una revisión. <em>Revista Técnica de la Facultad de Ingeniería Universidad del Zulia</em>, <em>29</em>(1), 54–64.</p>
+            </div>
+            
+            <div class="reference">
+                <p>Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO) & Organización Mundial de la Salud (OMS). (2011). <em>Evaluación de determinados aditivos alimentarios: Septuagésimo cuarto informe del Comité Mixto FAO/OMS de Expertos en Aditivos Alimentarios (JECFA)</em>. FAO.</p>
+            </div>
+            
+            <div class="reference">
+                <p>Organización para la Cooperación y el Desarrollo Económicos (OCDE). (2001). <em>Ácido cítrico: Informe inicial de evaluación SIDS</em>. OCDE Publishing.</p>
+            </div>
+            
+            <div class="reference">
+                <p>Pochteca Ecuador. (s. f.). <em>Ácido cítrico: qué es y dónde se utiliza</em>. https://ecuador.pochteca.net/acido-citrico-que-es-y-donde-se-utiliza/</p>
+            </div>
+            
+            <div class="reference">
+                <p>PubChem. (2023). Ácido cítrico. En <em>Centro Nacional de Información Biotecnológica (NCBI)</em>. https://pubchem.ncbi.nlm.nih.gov/compound/Citric-acid</p>
+            </div>
+            
+            <div class="reference">
+                <p>QuimiNet. (s. f.). <em>El ácido cítrico: métodos de obtención e historia</em>. https://www.quiminet.com/articulos/el-acido-citrico-metodos-de-obtencion-e-historia-18281.htm</p>
+            </div>
+            
+            <div class="reference">
+                <p>Rowe, R. C., Sheskey, P. J., & Quinn, M. E. (2012). <em>Manual de excipientes farmacéuticos</em> (7.ª ed.). Pharmaceutical Press.</p>
+            </div>
+            
+            <div class="reference">
+                <p>Stanbury, P. F., Whitaker, A., & Hall, S. J. (2016). <em>Principios de la tecnología de fermentación</em> (3.ª ed.). Butterworth-Heinemann.</p>
+            </div>
+            
+            <div class="reference">
+                <p>YesWeLab. (s. f.). <em>Laboratorio de ácido cítrico</em>. https://blog.yeswelab.fr/es/agroalimentario/laboratorio-de-acido-citrico/</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p style="font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem;">Universidad Técnica Particular de Loja</p>
+            <p style="font-size: 0.95rem; margin-bottom: 2rem;">Facultad de Ciencias Exactas y Naturales | Carrera: Ingeniería Química</p>
+            <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">As
